@@ -10,7 +10,6 @@ import java.io.InputStream
 class SampleMapper(
     val name: String,
     val info: String,
-    val src: String?,
     private val mapping: Map<Announcement, Pair<Int, Collection<String>>>) {
 
     private fun highestScore(one : Announcement, two : Announcement) : Announcement {
@@ -37,7 +36,7 @@ class SampleMapper(
             conf.mapping.forEach {
                 mapping[it.announcement] = it.weight to it.samples
             }
-            return SampleMapper(conf.name, conf.info, conf.src, mapping)
+            return SampleMapper(conf.name, conf.info, mapping)
         }
     }
 }
