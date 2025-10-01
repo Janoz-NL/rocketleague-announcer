@@ -54,8 +54,9 @@ jobs:
         push: true
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        build-args: |
+          GITHUB_ACTOR=${{ github.actor }}
+          GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
 
     - name: Generate artifact attestation
       uses: actions/attest-build-provenance@v3
